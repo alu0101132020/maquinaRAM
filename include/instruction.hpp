@@ -1,0 +1,6 @@
+
+class Instruction {
+
+  public:
+    execute();
+};
