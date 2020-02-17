@@ -1,28 +1,28 @@
 #include <vector>
 #include <fstream>
 
-class Tap {
+class Tape {
   protected:
     std::vector<int> elements;
     int head;
 
   public:
-    Tap();
-    ~Tap();
+    Tape();
+    ~Tape();
   private:
     void moveForward();
 };
 
-class ReadTap : public Tap {
+class ReadTape : public Tape {
   public:
-    ReadTap(const std::ifstream &file);
+    ReadTape(const std::ifstream &file);
     void read(const int &number);
   private:
     void load();
 };
 
 
-class WriteTap : public Tap {
+class WriteTape : public Tap {
   public:
     void write(const int &number);
     int elementsWritten();
