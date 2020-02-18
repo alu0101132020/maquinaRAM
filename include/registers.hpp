@@ -3,18 +3,18 @@
 #include <vector>
 #include <iostream>
 
-class Registers {
+class RegisterMemory {
   private:
     std::vector<int> regist;
   public:
-    Registers();
-    Registers(const int &number);
-    ~Registers();
+    RegisterMemory();
+    RegisterMemory(const int &number);
+    ~RegisterMemory();
 
     int getReg(const int &number);
     void setReg(const int &index, int &value);
     int numbOfReg(void);
     void writeRegisters();
-  private:
     std::vector<int> getAllReg();
+    // friend std::ostream& operator<<(std::ostream& os, RegisterMemory& dt);
 };

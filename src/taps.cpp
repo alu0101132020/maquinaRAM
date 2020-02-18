@@ -1,28 +1,33 @@
-#include "taps.hpp"
+#include "../include/taps.hpp"
 
 Tape::Tape()
     : head(-1) {}
 
 
-Tape::Tape() {}
+Tape::~Tape() {}
 
 void Tape::moveForward(void) {
   head++;
 }
 
-int Tape::elementsWritten(void) {
-	return elements.size();
+int WriteTape::elementsWritten(void) {
+	return Tape::elements.size();
 }
 
-void ReadTape::load(std::ifstream& file) {
-  if (file.is_open()) {
-      while (file) {
+ReadTape::ReadTape(std::string& file) {
+  load(file);
+}
+
+void ReadTape::load(std::string& file) {
+  std::ifstream inFile;
+  if (inFile.is_open()) {
+      while (inFile) {
         int readElement;
-        file >> readElement;
+        inFile >> readElement;
         elements.push_back(readElement);
         head++;
       }
-      file.close();
+      inFile.close();
   }
 }
 

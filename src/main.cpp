@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
-
-#include "taps.hpp"
+#include "../include/RAMMachine.hpp"
 
 int main(int argc, char** argv) {
   if (argc != 4) {
@@ -11,19 +10,12 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-  std::ifstream programFile;
-  std::ifstream readTapFile;
-  std::ifstream writeTapFile;
-  programFile.open(argv[1]);
-  readTapFile.open(argv[2]);
-  writeTapFile.open(argv[3]);
+  std::string programFile = argv[1];
+  std::string readFile = argv[2];
+  std::string writeFile = argv[3];
 
-  if ((!f_programa.is_open()) || (!f_cinta_lectura.is_open()) ||
-      (!f_cinta_escritura.is_open())) {
-    std::cerr << "Error abriendo alguno de los ficheros\n";
-    return 2;
-  }
-
+  RAMMachine RM(programFile, readFile, writeFile);
+  RM.writeState();
 
 
   return 0;

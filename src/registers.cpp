@@ -1,35 +1,41 @@
 #include "../include/registers.hpp"
 
-Registers::Registers() {
+RegisterMemory::RegisterMemory() {
   regist.push_back(0);
 }
 
-Registers::Registers(const int &number) :
+RegisterMemory::RegisterMemory(const int &number) :
    regist(number, 0) {
      if (number <= 0)
         throw "error";
    }
 
-Registers::~Registers() {}
+RegisterMemory::~RegisterMemory() {}
 
-int Registers::getReg(const int &index) {
+int RegisterMemory::getReg(const int &index) {
   return regist[index];
 }
 
-void Registers::setReg(const int &index, int &value) {
+void RegisterMemory::setReg(const int &index, int &value) {
   regist[index] = value;
 }
 
-std::vector<int> Registers::getAllReg() {
+std::vector<int> RegisterMemory::getAllReg() {
   return regist;
 }
 
-int Registers::numbOfReg(void) {
+int RegisterMemory::numbOfReg(void) {
   return regist.size();
 }
 
-void Registers::writeRegisters() {
+void RegisterMemory::writeRegisters() {
   for (int i = 0; i < regist.size(); i++) {
     std::cout << "|" << regist[i] << "|\n";
   }
 }
+
+// std::ostream& operator<<(std::ostream& os, RegisterMemory& rm) {
+//   for (int i = 0; i < rm.getAllReg().size(); i++) {
+//     os << "|" << rm.getAllReg()[i] << "|\n";
+//   }
+// }

@@ -15,14 +15,15 @@ class Tape {
 
 class ReadTape : public Tape {
   public:
-    ReadTape(const std::ifstream &file);
+    ReadTape( std::string &file);
     void read(const int &number);
+    void load(std::string &file);
   private:
-    void load();
+
 };
 
 
-class WriteTape : public Tap {
+class WriteTape : public Tape {
   public:
     void write(const int &number);
     int elementsWritten();
