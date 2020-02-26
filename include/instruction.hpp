@@ -1,6 +1,8 @@
 
 class Instruction {
-
   public:
-    execute();
+    Instruction();
+    ~Instruction();
+    virtual void execute() = 0;
 };
+
