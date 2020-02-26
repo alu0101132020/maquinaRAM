@@ -4,8 +4,8 @@
 
 int main(int argc, char** argv) {
   if (argc != 4) {
-    std::cerr << "El número de argumentos es incorrecto. Pase un fichero";
-    std::cerr << "con el nombre del programa, otro que contenga la cinta de";
+    std::cerr << "El número de argumentos es incorrecto. Pase un fichero ";
+    std::cerr << "con el nombre del programa, otro que contenga la cinta de ";
     std::cerr << "entrada y uno último con la cinta de salida\n";
     return 1;
   }

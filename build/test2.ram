@@ -1,14 +1,14 @@
 # Programa que reconoce el lenguaje formado por las 
-# palabras que tienen el mismo número de 1 y 2.
-# Las palabras finalizan con el número 0. 
-# Los únicos símbolos posibles de entrada son 0, 1 y 2.
-# La cinta de salida contendrá un 1 si se reconoce la palabra
+# palabras que tienen el mismo nï¿½mero de 1 y 2.
+# Las palabras finalizan con el nï¿½mero 0. 
+# Los ï¿½nicos sï¿½mbolos posibles de entrada son 0, 1 y 2.
+# La cinta de salida contendrï¿½ un 1 si se reconoce la palabra
 # y un 0 si no pertenece al lenguaje
 
 					LOAD =0
 					STORE 2
 					READ 1
-while:		LOAD 1
+while:              LOAD 1
 					JZERO end_wh
 					LOAD 1
 					SUB =1
@@ -26,5 +26,5 @@ end_wh:		LOAD 2
 					JZERO iguales
 					WRITE =0
 					JUMP fin
-iguales:	WRITE =1
-fin:			HALT
+iguales:			WRITE = 1
+fin:				HALT

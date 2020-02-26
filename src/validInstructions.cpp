@@ -27,8 +27,7 @@ std::string ValidInstructions::getInstCode(std::string instName) {
     if (definedInstructions[i].first == instName)
       return definedInstructions[i].second;
   }
-
-  return "";
+  return "-1";
 }
 
 std::string ValidInstructions::getInstName(std::string instCode) {
@@ -36,8 +35,7 @@ std::string ValidInstructions::getInstName(std::string instCode) {
     if (definedInstructions[i].second == instCode)
       return definedInstructions[i].first;
   }
-
-  return "";
+  return "-1";
 }
 
 void ValidInstructions::writeInst(void) {

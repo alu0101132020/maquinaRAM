@@ -4,12 +4,12 @@
 #include <algorithm>
 
 #include "validInstructions.hpp"
-// #include "../src/auxFunctions.cpp"
-
 
 class ProgramMemory {
   private:
-    std::vector <std::tuple <int, int, int> >  lines;
+    //Tuplas que almacenan códigod e instrucción, tipo de instrucción/direcc. y valor del parámetro.
+    std::vector <std::tuple <int, int, int> >  lines; 
+    //Parejas que almacenan los nombres de las etiquetas y sus líneas
     std::vector <std::pair <std::string, int > > tags;
     ValidInstructions VI;
 
@@ -21,5 +21,6 @@ class ProgramMemory {
     void setLine(const int &index, std::tuple < int, int, int> &value);
     std::vector < std::tuple <int, int, int> > getAllProgram();
     int numbOfLines(void);
-    void writeProgram();    
+    void writeProgram();
+    std::string typeOfInstruction(int number);
 };
