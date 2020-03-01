@@ -22,4 +22,5 @@ class RAMMachine {
     void debugMode();
     void executeOneInstruct();
     void start(bool debugModeFlag = 0);
+    void restart();
 };

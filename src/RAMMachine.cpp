@@ -13,7 +13,7 @@ void RAMMachine::start(bool debugModeFlag) {
     execute();
     // std::cout << "\t\t---- ESTADO FINAL ----\n\n";
     // writeState();
-    std::cout << "El programa ha ejecutado " << executedInstructions << " instrucciones.\n\n";
+    std::cout << "El programa ha ejecutado " << executedInstructions << " instrucciones.\n\n";    
   }
 }
 
@@ -92,6 +92,20 @@ void RAMMachine::executeOneInstruct() {
     int typeOfInst = std::get<0>(currentLine);
     int typeOfDir = std::get<1>(currentLine);
     int argumentOfInst = std::get<2>(currentLine);
+    // Si la instrucción es de tipo SALTO mostramos la etiqueta, si es de tipo HALT no mostramos parámetro, y en otro caso mostramos el valor numérico.
+    if (programMemory.typeOfInstruction(typeOfDir) == "NO PARAM.") {
+      std::cout << programMemory.getVI().getInstName(std::to_string(typeOfInst)) << "\n";
+    } else if (programMemory.typeOfInstruction(typeOfDir) != "SALTO") {
+      std::cout << programMemory.getVI().getInstName(std::to_string(typeOfInst)) << " ";
+      if (typeOfDir == 0) {
+        std::cout << "=";
+      } else if (typeOfDir == 2) {
+        std::cout << "*";
+      } 
+      std::cout << argumentOfInst << "\n";
+    } else {
+      std::cout << programMemory.getVI().getInstName(std::to_string(typeOfInst)) << " " <<  programMemory.nameOfTag(argumentOfInst) << "\n";
+    } 
     switch (typeOfInst) {
       case 0:
         currentInstruction = new LoadInstruction;
@@ -145,6 +159,12 @@ void RAMMachine::executeOneInstruct() {
   }
 }
 
+void RAMMachine::restart() {
+  programCounter = 0;
+  registerMemory.cleanRegisters();
+  writeTape.resetTape();
+  readTape.resetTape();
+}
 void RAMMachine::debugMode() {
   char option = 'q';
   do {
@@ -159,6 +179,7 @@ void RAMMachine::debugMode() {
     std::cout << "i: Ver cinta de entrada\n";
     std::cout << "o: Ver cinta de salida\n";
     std::cout << "h: Ayuda\n";
+    std::cout << "z: Reiniciar programa\n";
     std::cout << "x: Salir\n";
     }
     switch (option) {
@@ -181,6 +202,9 @@ void RAMMachine::debugMode() {
         writeTape.showTape();
         break;
       case ('h'):
+        break;
+      case ('z'):
+        restart();
         break;
       case ('x'):
         break;

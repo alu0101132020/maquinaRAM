@@ -13,6 +13,7 @@ class Tape {
     ~Tape();
     void showTape();
     Tape getTape(void);
+    void resetTape(void);
 };
 
 class ReadTape : public Tape {

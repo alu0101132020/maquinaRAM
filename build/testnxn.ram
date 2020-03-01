@@ -1,0 +1,22 @@
+read 0
+store 3 ; El registro por el que multiplicaremos el resultado en cada iteracion
+jgtz normalcase
+jzero zerocase
+jump negativecase
+normalcase: load 3
+store 2 ; El registro que contendrá el control de iteraciones
+load =1
+store 1 ; registro que contendrá el resultado
+iteration: load 1
+mul 3
+store 1
+load 2
+sub =1
+store 2
+jgtz iteration
+write 1
+halt
+zerocase: write =1
+halt
+negativecase: write =0
+halt

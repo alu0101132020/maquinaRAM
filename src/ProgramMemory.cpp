@@ -21,7 +21,7 @@ std::string & rtrim(std::string & str)
 }
 
 ProgramMemory::ProgramMemory(const std::string &file) :
-   VI("instrucciones.txt") {
+   VI("instrucciones.txt"), actualLine(0) {
 
     // Primero buscamos las etiquetas del programa
     findTags(file);
@@ -100,6 +100,7 @@ void ProgramMemory::buildProgram(const std::string &file) {
 
 
   while (getline(inFile, line)) {
+    actualLine++;
     std::string instCode = "";
     std::string arg = "";
     int opt = -1; // Opciones que puede tener una instrucción, 0 sin argumentos, 1 direccionamiento inmediato, 2 direccionamiento directo, 3 direccionamiento indirecto.
@@ -132,8 +133,8 @@ void ProgramMemory::buildProgram(const std::string &file) {
       instCode = VI.getInstCode(line);
     }
     if (instCode == "") {
-      std::cerr << "No hay ningún código de instrucción que coincida con la";
-      std::cerr << " línea " << lines.size() << ".\n";
+      std::cerr << "No hay ningún código de instrucción que coincida con la inst. de la";
+      std::cerr << " línea " << actualLine << ".\n";
       throw "Error";
     }
 
@@ -145,8 +146,8 @@ void ProgramMemory::buildProgram(const std::string &file) {
     } else if (line.find("=") != std::string::npos) {
       // Caso inmediato, controlando que store no reciba un inmediato
       if (instCode == VI.getInstCode("STORE")) {
-        std::cerr << "Error: no se puede direccionar de manera inmediata";
-        std::cerr << "con una instrucción store. Fallo en la línea " << lines.size() << ".\n";
+        std::cerr << "Error: no se puede direccionar de manera inmediata ";
+        std::cerr << "con una instrucción store. Fallo en la línea " << actualLine << ".\n";
         throw "Error";
       }
       arg = line.substr(1, line.length());

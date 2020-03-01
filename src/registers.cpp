@@ -20,6 +20,12 @@ void RegisterMemory::setReg(const int &index, int value) {
   regist[index] = value;
 }
 
+void RegisterMemory::cleanRegisters(void) {
+  for (int i = 0; i < regist.size(); i++) {
+    regist[i] = 0;
+  }
+}
+
 std::vector<int> RegisterMemory::getAllReg() {
   return regist;
 }

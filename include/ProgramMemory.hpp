@@ -12,6 +12,7 @@ class ProgramMemory {
     //Parejas que almacenan los nombres de las etiquetas y sus líneas
     std::vector <std::pair <std::string, int > > tags;
     ValidInstructions VI;
+    int actualLine;
 
   public:
     ProgramMemory(const std::string &file);

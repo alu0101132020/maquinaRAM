@@ -16,5 +16,6 @@ class RegisterMemory {
     int numbOfReg(void);
     void writeRegisters();
     std::vector<int> getAllReg();
+    void cleanRegisters(void);
     // friend std::ostream& operator<<(std::ostream& os, RegisterMemory& dt);
 };

@@ -1,0 +1,24 @@
+load =3
+store 2			
+lee: read 1
+load 1
+jzero fin
+store *2
+load 2
+add =1
+store 2
+jump lee
+fin: load =0
+store *2
+load =3
+store 2
+carga:  load *2
+jzero fin2
+mul =3
+store *2
+write *2
+load 2
+add =1
+store 2	
+jump carga
+fin2: halt

@@ -10,6 +10,10 @@ void Tape::moveForward(void) {
   head++;
 }
 
+void Tape::resetTape(void) {
+  head = 0;
+}
+
 void Tape::showTape(void) {
   for (int i = 0; i < elements.size(); i++) {
     std::cout << "| " << elements[i] << " | ";
