@@ -1,4 +1,4 @@
-#include "../include/taps.hpp"
+#include "../include/tapes.hpp"
 
 Tape::Tape()
     : head(-1) {}
@@ -10,12 +10,20 @@ void Tape::moveForward(void) {
   head++;
 }
 
-int WriteTape::elementsWritten(void) {
-	return Tape::elements.size();
+void Tape::showTape(void) {
+  for (int i = 0; i < elements.size(); i++) {
+    std::cout << "| " << elements[i] << " | ";
+  }
+  std::cout << "\n";
 }
 
 ReadTape::ReadTape(std::string& file) {
   load(file);
+}
+
+int ReadTape::read() {
+  moveForward();
+  return elements[head];
 }
 
 void ReadTape::load(std::string& file) {
@@ -25,21 +33,16 @@ void ReadTape::load(std::string& file) {
         int readElement;
         inFile >> readElement;
         elements.push_back(readElement);
-        head++;
       }
       inFile.close();
   }
 }
 
-
-
-/*
-if (file.is_open()) {
-    std::string line;
-    while (getline(file, line)) {
-      elements.push_back(line);
-      head++;
-    }
-    file.close();
+int WriteTape::elementsWritten(void) {
+	return Tape::elements.size();
 }
-*/
+
+void WriteTape::write(const int &number) {
+  moveForward();
+  elements[head] = number;
+}

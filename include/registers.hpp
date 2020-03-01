@@ -12,7 +12,7 @@ class RegisterMemory {
     ~RegisterMemory();
 
     int getReg(const int &number);
-    void setReg(const int &index, int &value);
+    void setReg(const int &index, int value);
     int numbOfReg(void);
     void writeRegisters();
     std::vector<int> getAllReg();

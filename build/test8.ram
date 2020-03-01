@@ -1,0 +1,7 @@
+  load =1
+   store 2
+   load =1
+   store 1
+   load =1
+  mul =2
+  store 3

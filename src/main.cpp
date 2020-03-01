@@ -15,6 +15,7 @@ int main(int argc, char** argv) {
   std::string writeFile = argv[3];
 
   RAMMachine RM(programFile, readFile, writeFile);
+  RM.execute();
   RM.writeState();
 
 

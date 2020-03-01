@@ -6,7 +6,7 @@ ODIR=../src
 
 .PHONY: all
 
-_OBJ = RAMMachine.o validInstructions.o registers.o ProgramMemory.o taps.o main.o
+_OBJ = RAMMachine.o validInstructions.o registers.o ProgramMemory.o tapes.o instruction.o instructionSet.o main.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
@@ -25,11 +25,14 @@ $(ODIR)/registers.o: $(ODIR)/registers.cpp $(IDIR)/registers.hpp
 $(ODIR)/ProgramMemory.o: $(ODIR)/ProgramMemory.cpp $(IDIR)/ProgramMemory.hpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(ODIR)/taps.o: $(ODIR)/taps.cpp $(IDIR)/taps.hpp
+$(ODIR)/tapes.o: $(ODIR)/tapes.cpp $(IDIR)/tapes.hpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-# $(ODIR)/instruction.o: $(ODIR)/instruction.cpp $(IDIR)/instruction.hpp
-# 	$(CC) -c -o $@ $< $(CFLAGS)
+$(ODIR)/instruction.o: $(ODIR)/instruction.cpp $(IDIR)/instruction.hpp
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+$(ODIR)/instructionSet.o: $(ODIR)/instructionSet.cpp $(IDIR)/instructionSet.hpp
+	$(CC) -c -o $@ $< $(CFLAGS)	 
 
 $(ODIR)/main.o: $(ODIR)/main.cpp
 	$(CC) -c -o $@ $< $(CFLAGS)

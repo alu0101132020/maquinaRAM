@@ -16,7 +16,7 @@ int RegisterMemory::getReg(const int &index) {
   return regist[index];
 }
 
-void RegisterMemory::setReg(const int &index, int &value) {
+void RegisterMemory::setReg(const int &index, int value) {
   regist[index] = value;
 }
 

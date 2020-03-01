@@ -23,4 +23,9 @@ class ProgramMemory {
     int numbOfLines(void);
     void writeProgram();
     std::string typeOfInstruction(int number);
+    void findTags(const std::string &file);
+    void buildProgram(const std::string &file);
+    int lineOfTag(std::string tagName);
+    std::string nameOfTag(int tagLine);
+    ValidInstructions getVI();
 };
