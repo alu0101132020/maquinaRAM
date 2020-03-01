@@ -8,6 +8,6 @@ bucle:  		READ 1
 				LOAD 1
 				MUL =2
 				STORE 1
-				WRITE 1
+				WRITE =1
 				JUMP bucle
 fin:		HALT

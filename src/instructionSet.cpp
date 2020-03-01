@@ -69,11 +69,26 @@ DivInstruction::~DivInstruction() {}
 void DivInstruction::execute(RegisterMemory &RM, WriteTape &WT, ReadTape &RT, const int &typeOfDir, int &arg, int &PC) {
   // 0 es inmediato, 1 es directo, 2 es indirecto.
   if (typeOfDir == 0) {
-    RM.setReg(0, RM.getReg(0) / arg);
+    if (arg != 0){
+      RM.setReg(0, RM.getReg(0) / arg);
+    } else {
+      std::cerr << "Error en la línea " << PC << ": no están permitidas divisiones entre 0.";
+      throw  "Error"; 
+    }
   } else if (typeOfDir == 1) {
-    RM.setReg(0, RM.getReg(0) / RM.getReg(arg));
+    if (RM.getReg(arg) != 0) {
+      RM.setReg(0, RM.getReg(0) / RM.getReg(arg));
+    } else {
+      std::cerr << "Error en la línea " << PC << ": no están permitidas divisiones entre 0.";
+      throw  "Error"; 
+    }  
   } else {
-    RM.setReg(0, RM.getReg(0) / RM.getReg(RM.getReg(arg)));
+    if (RM.getReg(RM.getReg(arg) != 0)) {
+      RM.setReg(0, RM.getReg(0) / RM.getReg(RM.getReg(arg)));
+    } else {
+      std::cerr << "Error en la línea " << PC << ": no están permitidas divisiones entre 0.";
+      throw  "Error"; 
+    }
   }
 }
 
@@ -128,5 +143,6 @@ void JumpGrZeInstruction::execute(RegisterMemory &RM, WriteTape &WT, ReadTape &R
 HaltInstruction::HaltInstruction() {}
 HaltInstruction::~HaltInstruction() {}
 void HaltInstruction::execute(RegisterMemory &RM, WriteTape &WT, ReadTape &RT, const int &typeOfDir, int &arg, int &PC) {
-  PC = -1;
+  PC = -2;
+  WT.writeOnFile();
 }

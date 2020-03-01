@@ -12,6 +12,7 @@ class Tape {
     Tape();
     ~Tape();
     void showTape();
+    Tape getTape(void);
 };
 
 class ReadTape : public Tape {
@@ -22,7 +23,11 @@ class ReadTape : public Tape {
 };
 
 class WriteTape : public Tape {
+  private:
+    std::string outputFile;
   public:
+    WriteTape(std::string &file);
     void write(const int &number);
+    void writeOnFile();
     int elementsWritten();
 };

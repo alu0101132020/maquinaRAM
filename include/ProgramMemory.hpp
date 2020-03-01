@@ -28,4 +28,6 @@ class ProgramMemory {
     int lineOfTag(std::string tagName);
     std::string nameOfTag(int tagLine);
     ValidInstructions getVI();
+    void disassemble();
+    bool taggedLine(int numberLine);
 };

@@ -13,10 +13,13 @@ class RAMMachine {
     ReadTape readTape;
     Instruction *currentInstruction;
     int programCounter;
-
+    int executedInstructions;
   public:
     RAMMachine(std::string &ramFile, std::string &inputFile, std::string &outputFile);
     void writeState();
     void execute();
     void executeOneStep();
+    void debugMode();
+    void executeOneInstruct();
+    void start(bool debugModeFlag = 0);
 };

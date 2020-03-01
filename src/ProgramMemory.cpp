@@ -1,7 +1,6 @@
 #include "../include/ProgramMemory.hpp"
 
-
-
+//Funciones auxiliares
 std::string stringToUpper(std::string &str)
 {
   std::transform(str.begin(), str.end(),str.begin(), ::toupper);
@@ -23,12 +22,12 @@ std::string & rtrim(std::string & str)
 
 ProgramMemory::ProgramMemory(const std::string &file) :
    VI("instrucciones.txt") {
+
     // Primero buscamos las etiquetas del programa
     findTags(file);
     // Construimos la memoria del programa
     buildProgram(file);
   }
-
 
 ProgramMemory::~ProgramMemory() {}
 
@@ -133,7 +132,7 @@ void ProgramMemory::buildProgram(const std::string &file) {
       instCode = VI.getInstCode(line);
     }
     if (instCode == "") {
-      std::cerr<< "No hay ningún código de instrucción que coincida con la";
+      std::cerr << "No hay ningún código de instrucción que coincida con la";
       std::cerr << " línea " << lines.size() << ".\n";
       throw "Error";
     }
@@ -147,7 +146,7 @@ void ProgramMemory::buildProgram(const std::string &file) {
       // Caso inmediato, controlando que store no reciba un inmediato
       if (instCode == VI.getInstCode("STORE")) {
         std::cerr << "Error: no se puede direccionar de manera inmediata";
-        std::cerr << "con un store. Fallo en la línea " << lines.size() << ".\n";
+        std::cerr << "con una instrucción store. Fallo en la línea " << lines.size() << ".\n";
         throw "Error";
       }
       arg = line.substr(1, line.length());
@@ -202,7 +201,8 @@ std::string ProgramMemory::nameOfTag(int tagLine) {
       return tags[i].first;
     }
   }
-  return "-1";
+  std::cerr << "Error: Se está intentando saltar a una etiqueta no definida en la línea " << tagLine;
+  throw  "Error";
 }
 
 std::tuple <int, int, int> ProgramMemory::getLine(const int &index) {
@@ -240,7 +240,41 @@ void ProgramMemory::writeProgram() {
       }
     }
   }
+}
 
+bool ProgramMemory::taggedLine(int numberLine) {
+  for (int i = 0; i < tags.size(); i++) {
+    if (tags[i].second == numberLine) {
+      return true;
+    }
+  }
+  return false;
+}
+
+void ProgramMemory::disassemble() {
+    for (int i = 0; i < lines.size(); i++) {
+    // Comprobamos si la línea tiene etiqueta
+    if (taggedLine(i)) {
+      std::cout << nameOfTag(i) << ": ";
+    }
+    // Pasamos el código de la instrucción a cadena y traducimos el nombre con la función de ValidInstructions getInstName
+    if (std::get<0>(lines[i]) != -1) {
+      // Si la instrucción es de tipo SALTO mostramos la etiqueta, si es de tipo HALT no mostramos parámetro, y en otro caso mostramos el valor numérico.
+      if (typeOfInstruction(std::get<1>(lines[i])) == "NO PARAM.") {
+        std::cout << VI.getInstName(std::to_string(std::get<0>(lines[i]))) << "\n";
+      } else if (typeOfInstruction(std::get<1>(lines[i])) != "SALTO") {
+        std::cout << VI.getInstName(std::to_string(std::get<0>(lines[i]))) << " ";
+        if (std::get<1>(lines[i]) == 0) {
+          std::cout << "=";
+        } else if (std::get<1>(lines[i]) == 2) {
+          std::cout << "*";
+        } 
+        std::cout << std::get<2>(lines[i]) << "\n";
+      } else {
+        std::cout << VI.getInstName(std::to_string(std::get<0>(lines[i]))) << " " <<  nameOfTag(std::get<2>(lines[i])) << "\n";
+      }
+    }
+  }
 }
 
 ValidInstructions ProgramMemory::getVI() {

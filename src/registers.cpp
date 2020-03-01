@@ -30,8 +30,9 @@ int RegisterMemory::numbOfReg(void) {
 
 void RegisterMemory::writeRegisters() {
   for (int i = 0; i < regist.size(); i++) {
-    std::cout << "|" << regist[i] << "|\n";
+    std::cout << "| " << regist[i] << " | ";
   }
+  std::cout << "\n";
 }
 
 // std::ostream& operator<<(std::ostream& os, RegisterMemory& rm) {

@@ -3,21 +3,23 @@
 #include "../include/RAMMachine.hpp"
 
 int main(int argc, char** argv) {
-  if (argc != 4) {
+  if (argc != 4 && argc != 5) {
     std::cerr << "El número de argumentos es incorrecto. Pase un fichero ";
     std::cerr << "con el nombre del programa, otro que contenga la cinta de ";
     std::cerr << "entrada y uno último con la cinta de salida\n";
     return 1;
   }
-
+  bool debugModeFlag = false;
   std::string programFile = argv[1];
   std::string readFile = argv[2];
   std::string writeFile = argv[3];
+  std::string debMF = argv[4];
+  if (debMF == "debug") {
+    debugModeFlag = true;
+  }
 
   RAMMachine RM(programFile, readFile, writeFile);
-  RM.execute();
-  RM.writeState();
-
+  RM.start(debugModeFlag);
 
   return 0;
 }
