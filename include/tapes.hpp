@@ -31,4 +31,5 @@ class WriteTape : public Tape {
     void write(const int &number);
     void writeOnFile();
     int elementsWritten();
+    void resetWTape(void);
 };

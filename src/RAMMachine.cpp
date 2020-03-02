@@ -162,7 +162,7 @@ void RAMMachine::executeOneInstruct() {
 void RAMMachine::restart() {
   programCounter = 0;
   registerMemory.cleanRegisters();
-  writeTape.resetTape();
+  writeTape.resetWTape();
   readTape.resetTape();
 }
 void RAMMachine::debugMode() {

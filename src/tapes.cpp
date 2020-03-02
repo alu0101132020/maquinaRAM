@@ -54,13 +54,18 @@ void WriteTape::writeOnFile() {
   outFile.open(outputFile);
   if (outFile.is_open()) {
     for (int i = 0; i < elements.size(); i++) {
-      outFile << elements[i];
+      outFile << "| " << elements[i] << " | ";
     }
   } else {
     std::cout << "Unable to open file";
     exit(1); // terminate with error
   }
-  outFile.close(); 
+  outFile.close();
+}
+
+void WriteTape::resetWTape(void) {
+  head = 0;
+  elements.clear(); 
 }
 
 Tape Tape::getTape(void) {

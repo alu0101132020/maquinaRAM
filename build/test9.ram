@@ -1,3 +1,5 @@
+;Igual que el programa 7
+
 load =3
 store 2			
 lee: read 1

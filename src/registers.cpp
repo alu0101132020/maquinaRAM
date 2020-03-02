@@ -12,7 +12,7 @@ RegisterMemory::RegisterMemory(const int &number) :
 
 RegisterMemory::~RegisterMemory() {}
 
-int RegisterMemory::getReg(const int &index) {
+long long RegisterMemory::getReg(const int &index) {
   return regist[index];
 }
 
@@ -26,7 +26,7 @@ void RegisterMemory::cleanRegisters(void) {
   }
 }
 
-std::vector<int> RegisterMemory::getAllReg() {
+std::vector<long long> RegisterMemory::getAllReg() {
   return regist;
 }
 
