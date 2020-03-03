@@ -1,3 +1,11 @@
+/**
+ * Autor: Manuel Andrés Carrera.
+ * Universidad: Universidad de La Laguna.
+ * Curso: 3
+ * Grado: Ingeniería informática.
+ * Descripción: Código que recoge las instrucciones válidas y las almacena
+ */
+
 #pragma once
 
 #include <vector>

@@ -1,3 +1,12 @@
+/**
+ * Autor: Manuel Andrés Carrera.
+ * Universidad: Universidad de La Laguna.
+ * Curso: 3
+ * Grado: Ingeniería informática.
+ * Descripción: Código que implementa la memoria de registros de la máquina
+ *   RAM almacenada en un vector de elementos (registros).
+ */
+
 #pragma once
 
 #include <vector>

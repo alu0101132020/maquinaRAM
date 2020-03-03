@@ -153,7 +153,7 @@ void RAMMachine::executeOneInstruct() {
       throw "error";
     }
     programCounter++;
-    executedInstructions++;
+    // executedInstructions++;
   } else {
     std::cout << "El programa ha llegado a su final.\n";
   }

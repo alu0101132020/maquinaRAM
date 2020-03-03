@@ -1,3 +1,12 @@
+/**
+ * Autor: Manuel Andrés Carrera.
+ * Universidad: Universidad de La Laguna.
+ * Curso: 3
+ * Grado: Ingeniería informática.
+ * Descripción: Código que implementa las distintas isntrucciones que es capaz
+ *    de ejecutar la máquina RAM. Incluye una clase por instrucción.
+ */
+
 #pragma once
 #include "instruction.hpp"
 

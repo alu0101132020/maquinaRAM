@@ -1,3 +1,12 @@
+/**
+ * Autor: Manuel Andrés Carrera.
+ * Universidad: Universidad de La Laguna.
+ * Curso: 3
+ * Grado: Ingeniería informática.
+ * Descripción: Código de las distintas cintas que usa la máquina RAM,
+ *    concretamente una de escritura, una de lectura y una por defecto.
+ */
+
 #pragma once
 #include <vector>
 #include <fstream>

@@ -1,3 +1,12 @@
+/**
+ * Autor: Manuel Andrés Carrera.
+ * Universidad: Universidad de La Laguna.
+ * Curso: 3
+ * Grado: Ingeniería informática.
+ * Descripción: Código que implementa la máquina RAM que es capaz de ejecutar
+ *    código en lenguaje ensamblador RAM.
+ */
+
 #pragma once
 #include "registers.hpp"
 #include "ProgramMemory.hpp"

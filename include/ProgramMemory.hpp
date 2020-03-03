@@ -1,3 +1,13 @@
+/**
+ * Autor: Manuel Andrés Carrera.
+ * Universidad: Universidad de La Laguna.
+ * Curso: 3
+ * Grado: Ingeniería informática.
+ * Descripción: Código que implementa la memoria del programa de la máquina
+ *    RAM, almacenada como un vector de tuplas para cada una de las instrucciones
+ *    y un vector de parejas que contiene las etiquetas del programa.
+ */
+
 #pragma once
 #include <vector>
 #include <tuple>
