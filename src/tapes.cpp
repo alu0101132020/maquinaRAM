@@ -43,7 +43,7 @@ void ReadTape::load(std::string& file) {
     std::cout << "Unable to open file";
     exit(1); // terminate with error
   }
-  inFile.close(); 
+  inFile.close();
 }
 
 WriteTape::WriteTape(std::string &file) :
@@ -54,7 +54,7 @@ void WriteTape::writeOnFile() {
   outFile.open(outputFile);
   if (outFile.is_open()) {
     for (int i = 0; i < elements.size(); i++) {
-      outFile << "| " << elements[i] << " | ";
+      outFile << elements[i] << "\n";
     }
   } else {
     std::cout << "Unable to open file";
@@ -65,7 +65,7 @@ void WriteTape::writeOnFile() {
 
 void WriteTape::resetWTape(void) {
   head = 0;
-  elements.clear(); 
+  elements.clear();
 }
 
 Tape Tape::getTape(void) {

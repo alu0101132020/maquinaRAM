@@ -4,6 +4,18 @@
 #include "tapes.hpp"
 #include "instructionSet.hpp"
 #include "instruction.hpp"
+#define LOAD 0
+#define STORE 1
+#define ADD 2
+#define SUB 3
+#define MUL 4
+#define DIV 5
+#define READ 6
+#define WRITE 7
+#define JUMP 8
+#define JGTZ 9
+#define JZERO 10
+#define HALT 11
 
 class RAMMachine {
   private:

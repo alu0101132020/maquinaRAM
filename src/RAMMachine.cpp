@@ -13,7 +13,7 @@ void RAMMachine::start(bool debugModeFlag) {
     execute();
     // std::cout << "\t\t---- ESTADO FINAL ----\n\n";
     // writeState();
-    std::cout << "El programa ha ejecutado " << executedInstructions << " instrucciones.\n\n";    
+    std::cout << "El programa ha ejecutado " << executedInstructions << " instrucciones.\n\n";
   }
 }
 
@@ -36,40 +36,40 @@ void RAMMachine::execute() {
     int typeOfDir = std::get<1>(currentLine);
     int argumentOfInst = std::get<2>(currentLine);
     switch (typeOfInst) {
-      case 0:
+      case LOAD:
         currentInstruction = new LoadInstruction;
         break;
-      case 1:
+      case STORE:
         currentInstruction = new StoreInstruction;
         break;
-      case 2:
+      case ADD:
         currentInstruction = new AddInstruction;
         break;
-      case 3:
+      case SUB:
         currentInstruction = new SubInstruction;
-        break;      
-      case 4:
+        break;
+      case MUL:
         currentInstruction = new MulInstruction;
         break;
-      case 5:
+      case DIV:
         currentInstruction = new DivInstruction;
-        break;  
-      case 6:
+        break;
+      case READ:
         currentInstruction = new ReadInstruction;
         break;
-      case 7:
+      case WRITE:
         currentInstruction = new WriteInstruction;
-        break;     
-      case 8:
+        break;
+      case JUMP:
         currentInstruction = new JumpInstruction;
         break;
-      case 9:
+      case JGTZ:
         currentInstruction = new JumpGrZeInstruction;
-        break;     
-      case 10:
+        break;
+      case JZERO:
         currentInstruction = new JumpZeInstruction;
-        break; 
-      case 11:
+        break;
+      case HALT:
         currentInstruction = new HaltInstruction;
         break;
       default:
@@ -101,46 +101,46 @@ void RAMMachine::executeOneInstruct() {
         std::cout << "=";
       } else if (typeOfDir == 2) {
         std::cout << "*";
-      } 
+      }
       std::cout << argumentOfInst << "\n";
     } else {
       std::cout << programMemory.getVI().getInstName(std::to_string(typeOfInst)) << " " <<  programMemory.nameOfTag(argumentOfInst) << "\n";
-    } 
+    }
     switch (typeOfInst) {
-      case 0:
+      case LOAD:
         currentInstruction = new LoadInstruction;
         break;
-      case 1:
+      case STORE:
         currentInstruction = new StoreInstruction;
         break;
-      case 2:
+      case ADD:
         currentInstruction = new AddInstruction;
         break;
-      case 3:
+      case SUB:
         currentInstruction = new SubInstruction;
-        break;      
-      case 4:
+        break;
+      case MUL:
         currentInstruction = new MulInstruction;
         break;
-      case 5:
+      case DIV:
         currentInstruction = new DivInstruction;
-        break;  
-      case 6:
+        break;
+      case READ:
         currentInstruction = new ReadInstruction;
         break;
-      case 7:
+      case WRITE:
         currentInstruction = new WriteInstruction;
-        break;     
-      case 8:
+        break;
+      case JUMP:
         currentInstruction = new JumpInstruction;
         break;
-      case 9:
+      case JGTZ:
         currentInstruction = new JumpGrZeInstruction;
-        break;     
-      case 10:
+        break;
+      case JZERO:
         currentInstruction = new JumpZeInstruction;
-        break; 
-      case 11:
+        break;
+      case HALT:
         currentInstruction = new HaltInstruction;
         break;
       default:
